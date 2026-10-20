@@ -1,23 +1,15 @@
-import heroImg from './hero.jpg';
-import drZelkaImg from './dr-zelka.jpg';
-import smileMakeoverImg from './smile-makeover.jpg';
-import clinicLoungeImg from './clinic-lounge.jpg';
-import dentalImplantsImg from './dental-implants.jpg';
-import clearAlignersImg from './clear-aligners.jpg';
-import botoxWellnessImg from './botox-wellness.jpg';
-import smileBeforeImg from './smile-before.jpg';
-import smileAfterImg from './smile-after.jpg';
-
+// Robust asset registry mapping to static /assert/images/ paths
+// Avoiding static ESM binary imports prevents UNRESOLVED_IMPORT errors during Vercel/Bun builds
 export const IMAGES = {
-  hero: heroImg,
-  drZelka: drZelkaImg,
-  smileMakeover: smileMakeoverImg,
-  clinicLounge: clinicLoungeImg,
-  dentalImplants: dentalImplantsImg,
-  clearAligners: clearAlignersImg,
-  botoxWellness: botoxWellnessImg,
-  smileBefore: smileBeforeImg,
-  smileAfter: smileAfterImg,
+  hero: "/assert/images/hero.jpg",
+  drZelka: "/assert/images/dr-zelka.jpg",
+  smileMakeover: "/assert/images/smile-makeover.jpg",
+  clinicLounge: "/assert/images/clinic-lounge.jpg",
+  dentalImplants: "/assert/images/dental-implants.jpg",
+  clearAligners: "/assert/images/clear-aligners.jpg",
+  botoxWellness: "/assert/images/botox-wellness.jpg",
+  smileBefore: "/assert/images/smile-before.jpg",
+  smileAfter: "/assert/images/smile-after.jpg",
 } as const;
 
 export default IMAGES;
