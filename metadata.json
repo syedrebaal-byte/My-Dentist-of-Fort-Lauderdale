@@ -1,0 +1,6 @@
+{
+  "name": "My Dentist of Fort Lauderdale | Dr. Zelka Licina DDS",
+  "description": "Experience bespoke cosmetic dentistry, dental implants, clear aligners, and comprehensive gentle care in Fort Lauderdale, FL with Dr. Zelka Licina ('Dr. Z').",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
