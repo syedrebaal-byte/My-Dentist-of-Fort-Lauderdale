@@ -1,3 +1,5 @@
+import { IMAGES } from '../assets/images';
+
 export interface ServiceItem {
   id: string;
   title: string;
@@ -42,7 +44,7 @@ export const CLINIC_INFO = {
       "Atlantic Coast District Dental Association (ACDDA)",
       "Academy of General Dentistry (AGD)"
     ],
-    image: "/assets/images/dr-zelka.jpg"
+    image: IMAGES.drZelka
   },
   contact: {
     address: "2500 E Oakland Park Blvd",
@@ -119,7 +121,7 @@ export const SERVICES: ServiceItem[] = [
     shortDesc: "Custom-sculpted ultra-thin ceramic veneers designed to mirror natural tooth translucency, proportion, and luminosity.",
     tagline: "The Art of Natural Smile Harmony",
     fullDesc: "Dr. Z treats smile aesthetics as bespoke facial architecture. Rather than sterile 'chicklet' smiles, our veneers are individually shaded, textured, and bonded to celebrate your unique facial contours and lip line. Perfect for worn enamel, deep tetracycline staining, uneven spacing, or chip corrections.",
-    image: "/assets/images/smile-makeover.jpg",
+    image: IMAGES.smileMakeover,
     benefits: [
       "Stain-resistant laboratory-grade feldspathic and lithium disilicate porcelain",
       "Conservative minimal-prep techniques that preserve healthy natural enamel",
@@ -145,7 +147,7 @@ export const SERVICES: ServiceItem[] = [
     shortDesc: "State-of-the-art biocompatible titanium and zirconia implants restoring full chewing force and natural bone vitality.",
     tagline: "Permanent Strength. Indistinguishable Aesthetics.",
     fullDesc: "A missing tooth compromises bone density and neighboring teeth alignment. Dr. Z completed surgical training at New York Presbyterian Hospital and Columbia University, ensuring precise computer-guided implant placement that seamlessly fuses with your jawbone.",
-    image: "/assets/images/dental-implants.jpg",
+    image: IMAGES.dentalImplants,
     benefits: [
       "Prevents ongoing facial bone loss and hollowed cheek contours",
       "Restores 100% natural chewing strength without dietary restrictions",
@@ -171,7 +173,7 @@ export const SERVICES: ServiceItem[] = [
     shortDesc: "Discreet, removable clear aligners that gently straighten crowded, gapped, or misaligned smiles without metal brackets.",
     tagline: "Seamless Alignment Built for Modern Lifestyles",
     fullDesc: "Straighten your smile discreetly without disruptive metal wires. Clear aligners utilize custom medical-grade SmartTrack polymers to systematically guide your teeth into optimal occlusion, enhancing both your aesthetic line and periodontal health.",
-    image: "/assets/images/clear-aligners.jpg",
+    image: IMAGES.clearAligners,
     benefits: [
       "Virtually imperceptible transparent trays",
       "Removable for dining, brushing, flossing, and special events",
@@ -197,7 +199,7 @@ export const SERVICES: ServiceItem[] = [
     shortDesc: "Therapeutic and aesthetic neuromodulators to soften facial tension, alleviate jaw pain, and reduce gummy smile exposure.",
     tagline: "Dentist-Level Facial Anatomy Mastery",
     fullDesc: "Because dentists perform thousands of precise facial injections each year, Dr. Z has unparalleled anatomical mastery of facial musculature. We utilize Botox and therapeutic neuromodulators for both radiant aesthetic rejuvenation and profound relief from chronic jaw clenching, TMJ migraine pressure, and teeth grinding (bruxism).",
-    image: "/assets/images/botox-wellness.jpg",
+    image: IMAGES.botoxWellness,
     benefits: [
       "Relieves chronic jaw clenching (masseter hypertrophy) and tension headaches",
       "Protects teeth from subconscious nocturnal grinding and enamel fractures",
@@ -223,7 +225,7 @@ export const SERVICES: ServiceItem[] = [
     shortDesc: "Thorough digital health assessments, ultrasonic biofilm cleanings, and low-radiation 3D imaging in a tranquil setting.",
     tagline: "Proactive Healthcare Rooted in Patient Comfort",
     fullDesc: "Oral health is intimately linked to cardiovascular wellness and systemic health. Our preventative protocol combines gentle ultrasonic scaling, oral cancer screenings, digital diagnostic imaging, and personalized remineralization therapies to protect your teeth before problems arise.",
-    image: "/assets/images/clinic-lounge.jpg",
+    image: IMAGES.clinicLounge,
     benefits: [
       "Ultra-low radiation HD digital diagnostic imaging",
       "Gentle ultrasonic calculus removal that is easy on sensitive gums",
@@ -248,7 +250,7 @@ export const SERVICES: ServiceItem[] = [
     shortDesc: "Rapid-response relief for severe toothaches, broken teeth, knocked-out teeth, lost crowns, or acute oral trauma.",
     tagline: "Immediate Relief When You Need It Most",
     fullDesc: "Dental emergencies never happen on schedule. Dr. Z and our clinical team reserve dedicated emergency slots daily to diagnose the source of your pain, stop infection, and restore your comfort immediately.",
-    image: "/assets/images/hero.jpg",
+    image: IMAGES.hero,
     benefits: [
       "Priority same-day emergency appointment reservations",
       "Immediate pain management and infection control",
@@ -321,8 +323,8 @@ export const BEFORE_AFTER_CASES = [
     chiefComplaint: "Enamel wear, chipped incisal edges, and uneven shade discoloration",
     solution: "8 Custom minimal-prep feldspathic porcelain veneers in shade BL2 with natural incisal translucency",
     duration: "2 weeks",
-    beforeImage: "/assets/images/smile-before.jpg",
-    afterImage: "/assets/images/smile-after.jpg"
+    beforeImage: IMAGES.smileBefore,
+    afterImage: IMAGES.smileAfter
   }
 ];
 

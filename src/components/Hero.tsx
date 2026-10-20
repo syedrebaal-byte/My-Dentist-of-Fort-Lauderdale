@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, Phone, Star, ShieldCheck, Sparkles, MapPin, ArrowUpRight } from 'lucide-react';
 import { CLINIC_INFO } from '../data/clinicData';
+import { IMAGES } from '../assets/images';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -13,7 +14,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExploreServices }) 
       {/* Background Hero Image with editorial gradient mask */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/assets/images/hero.jpg"
+          src={IMAGES.hero}
           alt="My Dentist of Fort Lauderdale State-of-the-Art Clinic Interior"
           className="w-full h-full object-cover object-center opacity-40 scale-105 transition-transform duration-1000 ease-out"
         />
@@ -108,7 +109,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExploreServices }) 
               {/* Doctor Card Frame */}
               <div className="relative rounded-3xl overflow-hidden border border-slate-700/80 shadow-2xl bg-[#111A28] group">
                 <img
-                  src="/assets/images/dr-zelka.jpg"
+                  src={IMAGES.drZelka}
                   alt="Dr. Zelka Licina, DDS Lead Dentist at My Dentist of Fort Lauderdale"
                   className="w-full aspect-[4/4] object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
