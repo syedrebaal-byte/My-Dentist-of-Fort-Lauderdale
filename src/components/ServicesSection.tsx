@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SERVICES, ServiceItem } from '../data/clinicData';
+import { SafeImage } from './SafeImage';
 import { Sparkles, ArrowRight, CheckCircle2, Clock, ChevronRight, X, ShieldCheck, HeartHandshake } from 'lucide-react';
 
 interface ServicesSectionProps {
@@ -69,8 +70,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
             >
               {/* Service Card Image */}
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
-                <img
+                <SafeImage
                   src={service.image}
+                  imageKey={service.id}
+                  fallbackSrc={`/assert/images/${service.id.includes('veneers') ? 'smile-makeover' : service.id.includes('implants') ? 'dental-implants' : service.id.includes('aligners') ? 'clear-aligners' : service.id.includes('facial') ? 'botox-wellness' : service.id.includes('preventative') ? 'clinic-lounge' : 'hero'}.jpg`}
                   alt={service.title}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
@@ -134,8 +137,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
           >
             {/* Modal Header */}
             <div className="relative aspect-[21/9] sm:aspect-[24/9] overflow-hidden bg-slate-900">
-              <img
+              <SafeImage
                 src={activeModalService.image}
+                imageKey={activeModalService.id}
+                fallbackSrc={`/assert/images/${activeModalService.id.includes('veneers') ? 'smile-makeover' : activeModalService.id.includes('implants') ? 'dental-implants' : activeModalService.id.includes('aligners') ? 'clear-aligners' : activeModalService.id.includes('facial') ? 'botox-wellness' : activeModalService.id.includes('preventative') ? 'clinic-lounge' : 'hero'}.jpg`}
                 alt={activeModalService.title}
                 className="w-full h-full object-cover object-center opacity-70"
               />

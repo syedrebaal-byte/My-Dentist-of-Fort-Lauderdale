@@ -43,6 +43,7 @@ export const InteractiveTooth3D: React.FC = () => {
   const [activeLayer, setActiveLayer] = useState<LayerInfo>(LAYERS[0]);
   const [isRotating, setIsRotating] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const [webGlSupported, setWebGlSupported] = useState(true);
   const isRotatingRef = useRef(true);
   isRotatingRef.current = isRotating;
 
@@ -50,26 +51,38 @@ export const InteractiveTooth3D: React.FC = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Scene setup
-    const scene = new THREE.Scene();
+    let renderer: THREE.WebGLRenderer;
+    let scene: THREE.Scene;
+    let camera: THREE.PerspectiveCamera;
+    let toothGroup: THREE.Group;
+    let animationFrameId: number;
 
-    const width = container.clientWidth || 400;
-    const height = container.clientHeight || 450;
+    try {
+      // Scene setup
+      scene = new THREE.Scene();
 
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.set(0, 0.8, 4.2);
+      const width = container.clientWidth || 400;
+      const height = container.clientHeight || 450;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.2;
-    container.innerHTML = '';
-    container.appendChild(renderer.domElement);
+      camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+      camera.position.set(0, 0.8, 4.2);
 
-    // Group for tooth assembly
-    const toothGroup = new THREE.Group();
-    scene.add(toothGroup);
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.2;
+      container.innerHTML = '';
+      container.appendChild(renderer.domElement);
+
+      // Group for tooth assembly
+      toothGroup = new THREE.Group();
+      scene.add(toothGroup);
+    } catch (err) {
+      console.warn('WebGL initialization failed, falling back to 2.5D visual mode:', err);
+      setWebGlSupported(false);
+      return;
+    }
 
     // 1. Crown Geometry (Organic sculptural molar / premolar tooth anatomy)
     // We construct a multi-part sculptural representation using lathe / lofted procedural geometry
@@ -246,7 +259,6 @@ export const InteractiveTooth3D: React.FC = () => {
     window.addEventListener('resize', handleResize);
 
     // Animation Loop
-    let animationFrameId: number;
     let clock = new THREE.Clock();
 
     const animate = () => {
@@ -327,16 +339,30 @@ export const InteractiveTooth3D: React.FC = () => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div ref={containerRef} className="w-full h-full" />
-
-          {/* Interactive Cue Overlay */}
-          <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none px-3 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/50 text-[11px] text-slate-300">
-            <span className="flex items-center gap-1.5">
-              <Eye className="w-3.5 h-3.5 text-[#c5a880]" />
-              Interactive WebGL Viewport
-            </span>
-            <span className="text-slate-400">Click & Drag to Inspect</span>
-          </div>
+          {webGlSupported ? (
+            <>
+              <div ref={containerRef} className="w-full h-full" />
+              {/* Interactive Cue Overlay */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none px-3 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/50 text-[11px] text-slate-300">
+                <span className="flex items-center gap-1.5">
+                  <Eye className="w-3.5 h-3.5 text-[#c5a880]" />
+                  Interactive WebGL Viewport
+                </span>
+                <span className="text-slate-400">Click & Drag to Inspect</span>
+              </div>
+            </>
+          ) : (
+            <div className="relative w-full h-full flex flex-col items-center justify-center p-6 text-center">
+              <img
+                src="/assert/images/dental-implants.jpg"
+                alt="Precision Dental Anatomy and Titanium Implant"
+                className="max-h-[260px] object-contain rounded-xl shadow-lg border border-slate-700"
+              />
+              <div className="mt-3 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-[#c5a880]/30 text-xs text-[#d4bc9b]">
+                Anatomical Structural View: {activeLayer.name}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Anatomical Layer Selector & Details */}

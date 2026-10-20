@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { BEFORE_AFTER_CASES } from '../data/clinicData';
+import { SafeImage } from './SafeImage';
 import { Sparkles, ArrowLeftRight, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 export const BeforeAfterSlider: React.FC = () => {
@@ -55,8 +56,10 @@ export const BeforeAfterSlider: React.FC = () => {
             onClick={(e) => handleMove(e.clientX)}
           >
             {/* "AFTER" Image (Full background) */}
-            <img
+            <SafeImage
               src={activeCase.afterImage}
+              imageKey="smile-after"
+              fallbackSrc="/assert/images/smile-after.jpg"
               alt="Cosmetic Dentistry Smile Makeover After"
               className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
             />
@@ -69,8 +72,10 @@ export const BeforeAfterSlider: React.FC = () => {
               className="absolute inset-0 overflow-hidden pointer-events-none"
               style={{ width: `${sliderPosition}%` }}
             >
-              <img
+              <SafeImage
                 src={activeCase.beforeImage}
+                imageKey="smile-before"
+                fallbackSrc="/assert/images/smile-before.jpg"
                 alt="Patient Smile Before Treatment"
                 className="absolute inset-0 w-full h-full object-cover object-center max-w-none"
                 style={{

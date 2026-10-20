@@ -1,6 +1,7 @@
 import React from 'react';
 import { CLINIC_AMENITIES, CLINIC_INFO } from '../data/clinicData';
 import { IMAGES } from '../assets/images';
+import { SafeImage } from './SafeImage';
 import { Sparkles, MapPin, Coffee, Tv, Headphones, Wind, Scan, Clock } from 'lucide-react';
 
 const amenityIcons = [Coffee, Tv, Headphones, Wind, Scan, Clock];
@@ -27,8 +28,10 @@ export const ClinicTour: React.FC = () => {
         {/* Dual High-Resolution Photo Gallery */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
           <div className="lg:col-span-7 rounded-3xl overflow-hidden border border-slate-700/80 shadow-2xl relative group aspect-[16/10]">
-            <img
+            <SafeImage
               src={IMAGES.hero}
+              imageKey="hero"
+              fallbackSrc="/assert/images/hero.jpg"
               alt="Floor-to-ceiling glass dental operatory overlooking Fort Lauderdale palm garden"
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
             />
@@ -47,8 +50,10 @@ export const ClinicTour: React.FC = () => {
           </div>
 
           <div className="lg:col-span-5 rounded-3xl overflow-hidden border border-slate-700/80 shadow-2xl relative group aspect-[4/3] lg:aspect-auto">
-            <img
+            <SafeImage
               src={IMAGES.clinicLounge}
+              imageKey="clinic-lounge"
+              fallbackSrc="/assert/images/clinic-lounge.jpg"
               alt="My Dentist of Fort Lauderdale reception lounge with Italian travertine stone"
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
             />

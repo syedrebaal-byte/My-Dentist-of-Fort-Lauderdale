@@ -1,6 +1,7 @@
 import React from 'react';
 import { CLINIC_INFO } from '../data/clinicData';
 import { Award, GraduationCap, ShieldCheck, Heart, Sparkles, CheckCircle2, Calendar } from 'lucide-react';
+import { SafeImage } from './SafeImage';
 
 interface DoctorSpotlightProps {
   onOpenBooking: () => void;
@@ -21,8 +22,10 @@ export const DoctorSpotlight: React.FC<DoctorSpotlightProps> = ({ onOpenBooking 
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative max-w-md mx-auto">
               <div className="relative rounded-3xl overflow-hidden border border-slate-700/80 shadow-2xl bg-[#0b131f]">
-                <img
+                <SafeImage
                   src={doc.image}
+                  imageKey="dr-zelka"
+                  fallbackSrc="/assert/images/dr-zelka.jpg"
                   alt={`${doc.fullName} - Lead Cosmetic & Restorative Dentist in Fort Lauderdale`}
                   className="w-full aspect-[4/5] object-cover object-top"
                 />
